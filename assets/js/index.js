@@ -22,7 +22,7 @@ function displayUsers(users) {
     const userList = document.getElementById('su-table-body');
     userList.innerHTML = '';
     
-    if (users.length > 1) {
+    if (users.length > 0) {
         users.forEach(user => {
             const userElement = document.createElement('tr');
     
