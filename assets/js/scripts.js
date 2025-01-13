@@ -1,3 +1,6 @@
+let userList = [];
+
+// Fetch data from API
 async function fetchUsers() {
     const apiUrl = 'https://jsonplaceholder.typicode.com/users';
 
@@ -6,13 +9,15 @@ async function fetchUsers() {
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        const users = await response.json();
-        displayUsers(users);
+
+        userList = await response.json();
+        displayUsers(userList);
     } catch (error) {
         console.error('Error when catching API:', error);
     }
 }
 
+// Display User Data in HTML
 function displayUsers(users) {
     const userList = document.getElementById('su-table-body');
     userList.innerHTML = ''; 
@@ -50,5 +55,16 @@ function displayUsers(users) {
         userList.appendChild(userElement);
     });
 }
+
+// Search data
+document.getElementById('su-search-input').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const filteredUsers = userList.filter(user => 
+        user.name.toLowerCase().includes(searchTerm) || 
+        user.email.toLowerCase().includes(searchTerm)
+    );
+
+    displayUsers(filteredUsers);
+});
 
 fetchUsers();
