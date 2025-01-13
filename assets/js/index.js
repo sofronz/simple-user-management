@@ -13,7 +13,7 @@ async function fetchUsers() {
         userList = await response.json();
         displayUsers(userList);
     } catch (error) {
-        console.error('Error when catching API:', error);
+        console.error('Error when catching data:', error);
     }
 }
 
