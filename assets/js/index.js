@@ -20,40 +20,52 @@ async function fetchUsers() {
 // Display User Data in HTML
 function displayUsers(users) {
     const userList = document.getElementById('su-table-body');
-    userList.innerHTML = ''; 
-    users.forEach(user => {
-        const userElement = document.createElement('tr');
-
-        userElement.innerHTML = `
-            <td>
-               ${user.id}
-            </td>
-            <td>
-                <a href="./detail.html?id=${user.id}" class="su-link">
-                    <span>
-                        ${user.name}
-                    </span>
-                    <br>
-                    <span class="badge text-bg-secondary mt-1">
-                        ${user.username}
-                    </span>
-                </a>
-            </td>
-            <td>
-                ${user.email}
-            </td>
-            <td>
-                ${user.phone}
-            </td>
-            <td>
-                ${user.company.name}
-            </td>
-            <td>
-                ${user.website}
+    userList.innerHTML = '';
+    
+    if (users.length > 1) {
+        users.forEach(user => {
+            const userElement = document.createElement('tr');
+    
+            userElement.innerHTML = `
+                <td>
+                   ${user.id}
+                </td>
+                <td>
+                    <a href="./detail.html?id=${user.id}" class="su-link">
+                        <span>
+                            ${user.name}
+                        </span>
+                        <br>
+                        <span class="badge text-bg-secondary mt-1">
+                            ${user.username}
+                        </span>
+                    </a>
+                </td>
+                <td>
+                    ${user.email}
+                </td>
+                <td>
+                    ${user.phone}
+                </td>
+                <td>
+                    ${user.company.name}
+                </td>
+                <td>
+                    ${user.website}
+                </td>
+            `;
+            userList.appendChild(userElement);
+        });        
+    } else {
+        const userEmptyElement = document.createElement('tr');
+        userEmptyElement.innerHTML = `
+            <td colspan="6" class="text-center">
+                Data not found!   
             </td>
         `;
-        userList.appendChild(userElement);
-    });
+
+        userList.appendChild(userEmptyElement);
+    }
 }
 
 // Search data
