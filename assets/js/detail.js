@@ -47,9 +47,9 @@ function displayUserDetail(user) {
                 <li class="list-group-item">
                     <i class="bi bi-house-door"></i>
                     <span>
-                        ${user.address.street}
-                        ${user.address.suit}
-                        ${user.address.city}
+                        ${user.address.street},
+                        ${user.address.suite},
+                        ${user.address.city},
                         ${user.address.zipcode}
                     </span>
                 </li>
