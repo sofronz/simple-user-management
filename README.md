@@ -27,6 +27,3 @@ You can access the project here: [Simple User Management](https://sofronz.github
 ## API Source
 This project uses data from:
 [JSONPlaceholder](https://jsonplaceholder.typicode.com/users)
-
-## License
-This project is open source and available under the [MIT License](LICENSE).
